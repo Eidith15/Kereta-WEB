@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>TUGAS 9</title>
+</head>
+<body>
+
+<script>
+var nama,
+	loop = true;
+	kereta = [];
+	
+
+	while(loop){
+		alert("Selamat datang di aplikasi Kereta");
+		var pilihan = prompt("Tuliskan 'tambah' untuk menambahkan penumpang dan 'turun' untuk menurunkan penumpang");
+		if (pilihan=="tambah") {
+			nama = prompt("Silahkan masukan nama penumpang");
+			tambahPenumpang(nama);
+			nama = undefined;
+		}
+		else if(pilihan=="turun") {
+			if (cekKosong()) {
+				nama = prompt("Silahkan masukan nama penumpang");
+				turunPenumpang(nama);
+				nama = undefined;
+			}
+		}
+		loop = confirm("Lanjutkan aplikasi ?");
+	}
+	
+
+
+	function tambahPenumpang(name){
+		alert("Selamat datang "+name);
+		if (kereta.length == 0) {
+			kereta.push(name);
+			}else{
+			for (var i = 0; i < kereta.length; i++) {
+				if (kereta[i] == undefined) {
+					kereta[i] = name;
+					break;
+				}else if(i == kereta.length-1){
+					kereta.push(name);
+					break;
+				}			
+			}
+				
+		}
+		return alert("daftar penumpang :\n"+kereta);
+	}
+		
+
+
+	function turunPenumpang(name){
+
+		for (var i = 0; i < kereta.length; i++) {
+			if (kereta[i] == name) {
+				alert("Selamat Jalan "+name);
+				kereta[i] = undefined;
+				return alert("daftar penumpang :\n"+kereta);
+
+			}else if (i == kereta.length -1){
+
+				return alert("Tidak ada nama penumpang bernama "+name);
+			}
+		};
+
+	}
+	
+
+	function cekKosong(){
+		if (kereta.length == 0) {
+			alert("Kereta Kosong !");
+			return false;
+		}else{
+			return true;
+		}
+			
+	}
+
+
+
+</script>
+</body>
+</html>
